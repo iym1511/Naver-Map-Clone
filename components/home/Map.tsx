@@ -36,6 +36,7 @@ const Map = ({
     const map = new window.naver.maps.Map(mapId, mapOptions);
     mapRef.current = map;
 
+    
     if (onLoad) {
       onLoad(map);
     }
