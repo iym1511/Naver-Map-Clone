@@ -5,6 +5,7 @@ import { STORE_KEY } from '../../hooks/useStores';
 //   CURRENT_STORE_KEY,
 // } from '../../hooks/useCurrentStore';
 // import type { ImageIcon, NaverMap } from '../../types/map';
+
 import { Store } from '@/types/srore';
 import { ImageIcon, NaverMap } from '@/types/map';
 import { MAP_KEY } from '@/hooks/useMaps';
@@ -43,7 +44,7 @@ const Markers = () => {
       {currentStore && (
         <Marker
           map={map}
-          coordinates={currentStore.coordinates}
+          coordinates={currentStore.coordinates} // 해당매장위치에
           icon={generateStoreMarkerIcon(currentStore.season, true)}
           onClick={clearCurrentStore}
           key={currentStore.nid}
