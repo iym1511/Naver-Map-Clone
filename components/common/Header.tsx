@@ -17,6 +17,7 @@ const HeaderComponent = ({ rightElements }: Props) => {
               width={110}
               height={20}
               alt="인프런 로고"
+              priority
             />
           </Link>
         </div>
