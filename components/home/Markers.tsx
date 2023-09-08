@@ -1,11 +1,6 @@
 import React from 'react';
 import useSWR from 'swr';
 import { STORE_KEY } from '../../hooks/useStores';
-// import useCurrentStore, {
-//   CURRENT_STORE_KEY,
-// } from '../../hooks/useCurrentStore';
-// import type { ImageIcon, NaverMap } from '../../types/map';
-
 import { Store } from '@/types/srore';
 import { ImageIcon, NaverMap } from '@/types/map';
 import { MAP_KEY } from '@/hooks/useMaps';
