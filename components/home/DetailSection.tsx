@@ -6,6 +6,7 @@ import styles from '../../styles/detail.module.scss';
 // import DetailContent from './DetailContent';
 import { Store } from '@/types/srore';
 import { IoIosArrowUp } from 'react-icons/io';
+import DetailContent from './DetailContent';
 
 const DetailSection = () => {
   
@@ -29,6 +30,7 @@ const DetailSection = () => {
         {!currentStore && <p className={styles.title}>매장을 선택해주세요.</p>}
         {currentStore && <p className={styles.title}>{currentStore.name}</p>}
       </div>
+      <DetailContent currentStore={currentStore} expanded={expanded}/>
     </div>
     // <div
     //   className={`${styles.detailSection} ${expanded ? styles.expanded : ''} ${

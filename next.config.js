@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['inflearn-nextjs.vercel.app'], // 이미지 호스트를 여기에 추가
+    domains: ['inflearn-nextjs.vercel.app', 'search.pstatic.net'], // 이미지 호스트를 여기에 추가
   },
 }
 
