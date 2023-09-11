@@ -39,11 +39,12 @@ const HomeHeader = () => {
             onClick={replaceAndCopyUrl}
             className={styles.box2}
             style={{ marginRight: 8 }}
+            aria-label="현재 위치 클립"
             key="button"
           >
             <AiOutlineShareAlt size={20} />
           </button>,
-          <Link href="/feedback" className={styles.box2} key="link">
+          <Link href="/feedback" className={styles.box2} key="link" aria-label="피드백 페이지로 이동">
             <VscFeedback size={20} />
           </Link>,
         ]}
