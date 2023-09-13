@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // console 두번찍히는 이유 
   reactStrictMode: true,
   images: {
     domains: ['inflearn-nextjs.vercel.app', 'search.pstatic.net'], // 이미지 호스트를 여기에 추가

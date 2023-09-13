@@ -5,15 +5,22 @@ import { NextPage } from "next";
 import useStores from "@/hooks/useStores";
 import Header from "@/components/home/Header";
 import DetailSection from "@/components/home/DetailSection";
-import Head from "next/head";
 // npm i next-seo
 import { NextSeo } from 'next-seo';
+import axios from "axios";
 
 interface Props {
   stores: Store[]
 }
 
 const Home: NextPage<Props> = ({ stores }) => {
+
+  // pages > api > stores.ts 에서 설정해준 값 가져옴
+  // useEffect(()=> {
+  //     const response = axios.get('/api/stores').then((res) => {
+  //       console.log(res.data)
+  //     })
+  // },[])
 
   const { initializeStores } = useStores();
   console.log(stores)
@@ -22,7 +29,11 @@ const Home: NextPage<Props> = ({ stores }) => {
     initializeStores(stores);
   }, [initializeStores, stores]);
 
-
+  // const fetcher = async () => {
+  //   const response = await axios.get('../public/stores.json');
+  //     return response.data;
+  // }
+  // console.log(fetcher())
   return (
     <Fragment>
       {/* title은 각각의 페이지마다 next/nead를 Import하여 사용권장 */}
@@ -47,7 +58,9 @@ export default Home
 
 export const getStaticProps = async () => {
   // next.api routes 로 불러오기
-  const stores = (await import('../public/stores.json')).default
+  // api url을 환경변수로 분리
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/stores`);
+  const stores = response.data;
   return {
     props : {stores},
     revalidate : 60*60,

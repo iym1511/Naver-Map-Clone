@@ -4,6 +4,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 // 전역적으로 수정을 가하고 싶을 때 필요한 페이지입니다.
 export default function Document() {
   return (
+    // 한국어만 지원하기 때문에 en => ko 변경
     <Html lang="ko">
       <Head >
         {/* 사이트 상단 제목 표시 */}
