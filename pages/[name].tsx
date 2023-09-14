@@ -14,7 +14,7 @@ const StoreDetail: NextPage<Props> = ({ store }) => {
   const expanded = true; 
   const router = useRouter();
   const { setCurrentStore } = useCurrentStore(); // 현제 매장 선택
-
+  console.log(store);
   const goToMap = () => {
     setCurrentStore(store);
     router.push(`
@@ -68,4 +68,3 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // getStaticProps 함수에서 props: { store }를 반환하면, 해당 컴포넌트에서 store라는 이름의 prop으로 데이터를 사용할 수 있게 됩니다.
   return { props: { store } };
 };
-

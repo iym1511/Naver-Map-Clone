@@ -1,8 +1,15 @@
 import HeaderComponent from "@/components/common/Header";
 import { Fragment } from "react";
 import { NextSeo } from "next-seo";
+import { GetServerSideProps, NextPage } from "next";
+import { getFeedbackListFromFirestore } from "@/components/firebase/feedback";
+import FeedbackSection from "@/components/feedback/FeedbackSection";
+import { Feedback } from "@/types/feedback";
 
-const Home = () => {
+interface Props {
+  initialFeedbackList: Feedback[];
+}
+const Home:NextPage<Props> = ({ initialFeedbackList }) => {
   return (
     <Fragment>
       <NextSeo 
@@ -11,8 +18,17 @@ const Home = () => {
       />
       <HeaderComponent />
       <main></main>
+      <FeedbackSection initialFeedbackList={initialFeedbackList} />
     </Fragment>
   );
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  return {
+    props: {
+      initialFeedbackList: await getFeedbackListFromFirestore(),
+    },
+  };
+};
