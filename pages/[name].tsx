@@ -51,13 +51,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // 매장 위에 새로운 매장이 추가될 일이 없으므로 false
   return { paths, fallback: false }; // true 면 Loading... 이 보여진 후 404 page
 };
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const store = (await import("../public/test.json")).default;
+//   const paths = store.map((store) => ({ params: { name : String(store.id)} }));
+//   return { paths, fallback: false };
+// }
 
 // 첫 사용자가 접근했을 때만 호출되고 두 번째 부터는 프리 렌더링된 페이지로 빠르게 접근할 수 있습니다.
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const stores = (await import("../public/stores.json")).default;
   // store전체 배열에서 params와 이름이 같은 스토어를 찾아서 props으로 전달
   const store = stores.find((store) => store.name === params?.name);
-
   // facllback 이 false 면 자동으로 404를 보여줘서 필요없는 로직
   // if(!store){
   //   return {

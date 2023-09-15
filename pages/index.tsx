@@ -8,9 +8,11 @@ import DetailSection from "@/components/home/DetailSection";
 // npm i next-seo
 import { NextSeo } from 'next-seo';
 import axios from "axios";
+import { Data } from "./api/testStores";
 
 interface Props {
   stores: Store[]
+  testScores : Data[]
 }
 
 const Home: NextPage<Props> = ({ stores }) => {
@@ -23,8 +25,8 @@ const Home: NextPage<Props> = ({ stores }) => {
   // },[])
 
   const { initializeStores } = useStores();
-  console.log(stores)
-
+  console.log(stores);
+  
   useEffect(() => {
     initializeStores(stores);
   }, [initializeStores, stores]);
@@ -58,12 +60,14 @@ export default Home
 
 export const getStaticProps = async () => {
   // next.api routes 로 불러오기
-  // api url을 환경변수로 분리
+  // api url을 환경변수로 분리 // 폴더 타고 들어감
   const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/stores`);
   const stores = response.data;
+
   return {
     props : {stores},
     revalidate : 60*60,
   }
 }
+
 
